@@ -12,7 +12,7 @@ int main() {
 
     string valid_options("+/-*");
     string valid_numerals("0123456789");
-    string valid_compsim("csCS");
+    string valid_compsim("csCSdD");
     string input;
     string comp_math;
     string comp_math_op;
@@ -114,6 +114,9 @@ int main() {
         int o4 = stoi(i4);
         int o5 = stoi(i5);
         int o6 = stoi(i6);
+
+        // GEN 0 CALCULATORS
+
         if(add == true) {int output = calc_sum(o1,o2,o3,o4,o5,o6); cout << "Answer: " << output <<endl;}
         else if(sub == true) {int output = calc_sub(o1,o2,o3,o4,o5,o6); cout << "Answer: " << output <<endl;}
         else if(mul == true) {int output = calc_mul(o1,o2,o3,o4,o5,o6); cout << "Answer: " << output <<endl;}
@@ -203,11 +206,15 @@ int main() {
             sqr = false;
             csqr = true;
         } else {
+            // Input did not contain log, sin, cos, tan, sqrt, pi, sqr or csqr.
             printf("Invalid something or rather");
         }
         printf("Enter a number\n");
         cin >> comp_i1;
         float comp_o1 = stoi(comp_i1);
+
+        //GEN ONE CALCULATORS 
+
         if(log == true) {float output = calc_log(comp_o1, 0); cout << "Answer: " << output <<endl;}
         else if(sin == true) {float output = calc_sin(comp_o1, 0); cout << "Answer(Rads): " << output <<endl;}
         else if(cos == true) {float output = calc_cos(comp_o1, 0); cout << "Answer(Rads): " << output <<endl;}
@@ -218,7 +225,43 @@ int main() {
         else if(sqrt == true) {float output = calc_sqrt(comp_o1, 0); cout << "Answer: " << output <<endl;}   
         else if(pi == true) {float output = calc_pi(comp_o1, 0); cout << "Answer: " << output <<endl;}
         else if(sqr == true) {float output = calc_sqr(comp_o1, 0); cout << "Answer: " << output <<endl;}
-        else if(csqr == true) {float output = calc_csqr(comp_o1, 0); cout << "Answer: " << output <<endl;}   
+        else if(csqr == true) {float output = calc_csqr(comp_o1, 0); cout << "Answer: " << output <<endl;}
+
+        //GENERATION 3 CALCULATORS ARE UNDER DEVELOPMENT
+
+
+    } else if (comp_math == "d") {
+
+        string devInput;
+        string Clog = "log";
+        string Csin = "sin";
+        string Ccos = "cos";
+        string Ctan = "tan";
+        string Csqrt = "sqrt";
+        string Cadd = "+";
+        string Csub = "-";
+        string Cmul = "*";
+        string Cdiv = "/";
+
+
+        printf("You Have unlocked Developer Mode;\n");
+        printf("Type Equation into CMD (lowercase letters with brackets for functions)\n")
+        cin >> devInput;
+
+        bool containsLog = devInput.find(Clog) != string::npos;
+        bool containsSin = devInput.find(Csin) != string::npos;
+        bool containsCos = devInput.find(Ccos) != string::npos;
+        bool containsTan = devInput.find(Ctan) != string::npos;
+        bool containsSqrt = devInput.find(Csqrt) != string::npos;
+        bool containsAdd = devInput.find(Cadd) != string::npos;
+        bool containsSub = devInput.find(Csub) != string::npos;
+        bool containsMul = devInput.find(Cmul) != string::npos;
+        bool containsDiv = devInput.find(Cdiv) != string::npos;
+
+        if(containsLog == true){
+            //Development in Progress
+        }
+
     }
     string b;
     cin >> b;
