@@ -15,7 +15,7 @@ int main() {
 
     string valid_options("+/-*");
     string valid_numerals("0123456789");
-    string valid_compsim("csCSdD");
+    string valid_compsim("csCSdDfF");
     string input;
     string comp_math;
     string comp_math_op;
@@ -36,7 +36,7 @@ int main() {
     string* pI6 = &i6;
 
     bool illegal_input;
-    cout << "Simple/Complex Math (c/s)" << endl;
+    cout << "Simple/Complex Math/Free Type (c/s/f)" << endl;
     cin >> comp_math;
 
     while (comp_math.size() != 1 || valid_compsim.find(comp_math) == string::npos)
@@ -233,7 +233,7 @@ int main() {
         //GENERATION 3 CALCULATORS ARE UNDER DEVELOPMENT
 
 
-    } else if (comp_math == "d") {
+    } else if (comp_math == "f") {
         
         //GENERATION 3 CALCULATORS HERE: (NOT FULLY DEVELOPED)
 
@@ -247,8 +247,6 @@ int main() {
         string Csqr = "sqr";
         string Ccsqr = "cqr";
 
-
-        printf("You Have unlocked Developer Mode;\n");
         printf("Type Equation into CMD (lowercase letters)\n");
         cin >> devInput;
 
@@ -259,12 +257,12 @@ int main() {
         bool containsSqrt = devInput.find(Csqrt) != string::npos;
         bool containsSqr = devInput.find(Csqr) != string::npos;
         bool containsCsqr = devInput.find(Ccsqr) != string::npos;
-        
+        // Checks input to see if a function has shown up in the input
         string num;
         
-        
+        // GENERATION 4 CALCULATOR
         if(containsLog == false && containsSin == false && containsCos == false && containsTan == false && containsSqrt == false && containsSqr == false && containsCsqr == false) {
-
+            // Double checks to make sure there is no function being called.
             // Stream to parse the input expression
             istringstream inputStream(devInput);
 
@@ -273,18 +271,18 @@ int main() {
 
             char op;
 
-            // Parse and evaluate the expression
             while (inputStream >> op) {
                 if (!isOperator(op)) {
                     cerr << "Error: Invalid operator!" << endl;
                     return EXIT_FAILURE;
+                    // Invalid Operator Function
                 }
 
                 double operand;
                 if (!(inputStream >> operand)) {
                     cerr << "Error: Invalid expression!" << endl;
                     return EXIT_FAILURE;
-                }
+                } // Invalid experession
                 
                 output = applyOperator(output, operand, op);
             }
