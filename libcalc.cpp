@@ -55,3 +55,28 @@ int calc_mul(int a, int b, int c, int d, int e, int f) {
 int calc_div(int a, int b, int c, int d, int e, int f) {
     return a/b/c/d/e/f;
 }
+
+bool isOperator(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
+}
+
+double applyOperator(double left, double right, char op) {
+    switch (op) {
+        case '+':
+            return left + right;
+        case '-':
+            return left - right;
+        case '*':
+            return left * right;
+        case '/':
+            if (right != 0) {
+                return left / right;
+            } else {
+                std::cerr << "Error: Division by zero!" << std::endl;
+                exit(EXIT_FAILURE);
+            }
+        default:
+            std::cerr << "Error: Invalid operator!" << std::endl;
+            exit(EXIT_FAILURE);
+    }
+}

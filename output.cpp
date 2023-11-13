@@ -3,6 +3,8 @@
 #include <float.h>
 #include <stdio.h>
 #include <string>
+#include <sstream>
+#include <cctype>
 #include <string.h>
 #include "libcalc.h"
 
@@ -231,6 +233,8 @@ int main() {
 
 
     } else if (comp_math == "d") {
+        
+        //GENERATION 3 CALCULATORS HERE: (NOT FULLY DEVELOPED)
 
         string devInput;
         string Clog = "log";
@@ -238,14 +242,13 @@ int main() {
         string Ccos = "cos";
         string Ctan = "tan";
         string Csqrt = "sqrt";
-        string Cadd = "+";
-        string Csub = "-";
-        string Cmul = "*";
-        string Cdiv = "/";
+
+        string Csqr = "sqr";
+        string Ccsqr = "cqr";
 
 
         printf("You Have unlocked Developer Mode;\n");
-        printf("Type Equation into CMD (lowercase letters with brackets for functions)\n")
+        printf("Type Equation into CMD (lowercase letters)\n");
         cin >> devInput;
 
         bool containsLog = devInput.find(Clog) != string::npos;
@@ -253,16 +256,62 @@ int main() {
         bool containsCos = devInput.find(Ccos) != string::npos;
         bool containsTan = devInput.find(Ctan) != string::npos;
         bool containsSqrt = devInput.find(Csqrt) != string::npos;
-        bool containsAdd = devInput.find(Cadd) != string::npos;
-        bool containsSub = devInput.find(Csub) != string::npos;
-        bool containsMul = devInput.find(Cmul) != string::npos;
-        bool containsDiv = devInput.find(Cdiv) != string::npos;
+        bool containsSqr = devInput.find(Csqr) != string::npos;
+        bool containsCsqr = devInput.find(Ccsqr) != string::npos;
+        
+        string num;
+        
+        
+        if(containsLog == false && containsSin == false && containsCos == false && containsTan == false && containsSqrt == false && containsSqr == false && containsCsqr == false) {
 
-        if(containsLog == true){
-            //Development in Progress
+            // Stream to parse the input expression
+            istringstream inputStream(devInput);
+
+            double output;
+            inputStream >> output;
+
+            char op;
+
+            // Parse and evaluate the expression
+            while (inputStream >> op) {
+                if (!isOperator(op)) {
+                    cerr << "Error: Invalid operator!" << endl;
+                    return EXIT_FAILURE;
+                }
+
+                double operand;
+                if (!(inputStream >> operand)) {
+                    cerr << "Error: Invalid expression!" << endl;
+                    return EXIT_FAILURE;
+                }
+                
+                output = applyOperator(output, operand, op);
+            }
+            cout << "Answer: " << output <<endl;
         }
 
+        for (char c : devInput) {
+            if(isdigit(c)) {
+                num += c;
+            } else if (!num.empty()){
+                break;
+            }
+        }
+        float devNum = stof(num); 
+        
+        if(containsLog == true) {float output = calc_log(devNum, 0); cout << "Answer: " << output <<endl;}
+        else if(containsSin == true) {float output = calc_sin(devNum, 0); cout << "Answer: " << output <<endl;}
+        else if(containsCos == true) {float output = calc_cos(devNum, 0); cout << "Answer: " << output <<endl;}
+        else if(containsTan == true) {float output = calc_tan(devNum, 0); cout << "Answer: " << output <<endl;}
+        else if(containsSqrt == true) {float output = calc_sqrt(devNum, 0); cout << "Answer: " << output <<endl;}
+        
+        // GEN 3.5 CALCULATORS
+        
+        else if(containsSqr == true) {float output = calc_sqr(devNum, 0); cout << "Answer: " << output <<endl;}
+        else if(containsCsqr == true) {float output = calc_csqr(devNum, 0); cout << "Answer: " << output <<endl;}
+        
     }
+
     string b;
     cin >> b;
 }
