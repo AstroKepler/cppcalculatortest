@@ -6,6 +6,7 @@
 #include <sstream>
 #include <cctype>
 #include <string.h>
+#include <windows.h>
 #include "libcalc.h"
 
 using namespace std;
@@ -312,6 +313,5 @@ int main() {
         
     }
 
-    string b;
-    cin >> b;
+    Sleep(4000);
 }
