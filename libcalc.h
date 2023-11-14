@@ -11,6 +11,7 @@ float calc_sqrt(float a, float b);
 float calc_pi(float a, float b);
 float calc_sqr(float a, float b);
 float calc_csqr(float a, float b);
+float calc_fac(float a);
 int calc_sum(int a, int b, int c, int d, int e, int f);
 int calc_sub(int a, int b, int c, int d, int e, int f);
 int calc_mul(int a, int b, int c, int d, int e, int f);

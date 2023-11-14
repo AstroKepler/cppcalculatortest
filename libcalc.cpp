@@ -43,6 +43,21 @@ float calc_csqr(float a, float b) {
     b = pow(a, 3);
     return b;
 }
+
+float calc_fac(float a) {
+    if (a < 0) {
+        // Factorial is not defined for negative numbers
+        return 0;
+    }
+
+    float result = 1;
+    for (int i = 2; i <= a; ++i) {
+        result *= i;
+    }
+
+    return result;
+}
+
 int calc_sum(int a, int b, int c, int d, int e, int f) {
     return a+b+c+d+e+f;
 }

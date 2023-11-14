@@ -15,7 +15,7 @@ int main() {
 
     string valid_options("+/-*");
     string valid_numerals("0123456789");
-    string valid_compsim("csCSdDfF");
+    string valid_compsim("csdf");
     string input;
     string comp_math;
     string comp_math_op;
@@ -36,7 +36,7 @@ int main() {
     string* pI6 = &i6;
 
     bool illegal_input;
-    cout << "Simple/Complex Math/Free Type (c/s/f)" << endl;
+    cout << "Simple/Complex Math/Free Type/Functions(d) (c/s/f/d)" << endl;
     cin >> comp_math;
 
     while (comp_math.size() != 1 || valid_compsim.find(comp_math) == string::npos)
@@ -135,6 +135,7 @@ int main() {
         bool pi;
         bool sqr;
         bool csqr;
+        bool fac;
         cout << "Enter a Complex Mathematical Operator" << endl;
         cin >> comp_math_op;
         if(comp_math_op == "log"){
@@ -146,6 +147,7 @@ int main() {
             pi = false;
             sqr = false;
             csqr = false;
+            fac = false;
         } else if (comp_math_op == "sin"){
             log = false;
             sin = true;
@@ -155,6 +157,7 @@ int main() {
             pi = false;
             sqr = false;
             csqr = false;
+            fac = false;
         } else if (comp_math_op == "cos"){
             log = false;
             sin = false;
@@ -164,6 +167,7 @@ int main() {
             pi = false;
             sqr = false;
             csqr = false;
+            fac = false;
         } else if (comp_math_op == "tan"){
             log = false;
             sin = false;
@@ -173,6 +177,7 @@ int main() {
             pi = false;
             sqr = false;
             csqr = false;
+            fac = false;
         } else if (comp_math_op == "sqrt"){
             log = false;
             sin = false;
@@ -182,6 +187,7 @@ int main() {
             pi = false;
             sqr = false;
             csqr = false;
+            fac = false;
         }else if (comp_math_op == "pi"){
             log = false;
             sin = false;
@@ -189,7 +195,9 @@ int main() {
             tan = false;
             sqrt = false;
             pi = true;
+            sqr = false;
             csqr = false;
+            fac = false;
         }else if (comp_math_op == "sqr"){
             log = false;
             sin = false;
@@ -199,6 +207,7 @@ int main() {
             pi = false;
             sqr = true;
             csqr = false;
+            fac = false;
         }else if (comp_math_op == "csqr"){
             log = false;
             sin = false;
@@ -208,6 +217,17 @@ int main() {
             pi = false;
             sqr = false;
             csqr = true;
+            fac = false;
+        } else if (comp_math_op == "fac"){
+            log = false;
+            sin = false;
+            cos = false;
+            tan = false;
+            sqrt = false;
+            pi = false;
+            sqr = false;
+            csqr = false;
+            fac = true;
         } else {
             // Input did not contain log, sin, cos, tan, sqrt, pi, sqr or csqr.
             printf("Invalid something or rather");
@@ -232,10 +252,10 @@ int main() {
 
         //GENERATION 3 CALCULATORS ARE UNDER DEVELOPMENT
 
+        else if(fac == true) {float output = calc_fac(comp_o1); cout << "Answer: " << output <<endl;}
 
     } else if (comp_math == "f") {
         
-        //GENERATION 3 CALCULATORS HERE: (NOT FULLY DEVELOPED)
 
         string devInput;
         string Clog = "log";
@@ -247,6 +267,8 @@ int main() {
         string Csqr = "sqr";
         string Ccsqr = "cqr";
 
+        string Cfac = "fac";
+
         printf("Type Equation into CMD (lowercase letters)\n");
         cin >> devInput;
 
@@ -257,11 +279,12 @@ int main() {
         bool containsSqrt = devInput.find(Csqrt) != string::npos;
         bool containsSqr = devInput.find(Csqr) != string::npos;
         bool containsCsqr = devInput.find(Ccsqr) != string::npos;
+        bool containsFac = devInput.find(Cfac) != string::npos;
         // Checks input to see if a function has shown up in the input
         string num;
         
         // GENERATION 4 CALCULATOR
-        if(containsLog == false && containsSin == false && containsCos == false && containsTan == false && containsSqrt == false && containsSqr == false && containsCsqr == false) {
+        if(containsFac == false && containsLog == false && containsSin == false && containsCos == false && containsTan == false && containsSqrt == false && containsSqr == false && containsCsqr == false) {
             // Double checks to make sure there is no function being called.
             // Stream to parse the input expression
             istringstream inputStream(devInput);
@@ -308,8 +331,7 @@ int main() {
         
         else if(containsSqr == true) {float output = calc_sqr(devNum, 0); cout << "Answer: " << output <<endl;}
         else if(containsCsqr == true) {float output = calc_csqr(devNum, 0); cout << "Answer: " << output <<endl;}
-        
-    }
-
+        else if(containsFac == true) {float output = calc_fac(devNum); cout << "Answer: " << output <<endl;}
+    } 
     Sleep(4000);
 }
