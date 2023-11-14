@@ -332,6 +332,27 @@ int main() {
         else if(containsSqr == true) {float output = calc_sqr(devNum, 0); cout << "Answer: " << output <<endl;}
         else if(containsCsqr == true) {float output = calc_csqr(devNum, 0); cout << "Answer: " << output <<endl;}
         else if(containsFac == true) {float output = calc_fac(devNum); cout << "Answer: " << output <<endl;}
-    } 
+    }  else if (comp_math == "d") {
+        string devInput;
+        string Crng1 = "orng";
+        string Crng10 = "trng";
+        string Crng100 = "hrng";
+        string Ccrng = "crng";
+        printf("Type a function into CMD\n");
+        cin >> devInput;
+
+        bool containsRng1 = devInput.find(Crng1) != string::npos;
+        bool containsRng10 = devInput.find(Crng10) != string::npos;
+        bool containsRng100 = devInput.find(Crng100) != string::npos;
+
+        bool containsCcrng = devInput.find(Ccrng) != string::npos;
+        
+        if(containsRng1 == true) {float output = calc_rng_float(0, 1, 0); cout << "Answer: " << output <<endl;}
+        else if(containsRng10 == true) {int output = calc_rng_int(0, 10, 0); cout << "Answer: " << output <<endl;}
+        else if(containsRng100 == true) {int output = calc_rng_int(0, 100, 0); cout << "Answer: " << output <<endl;}
+        else if(containsCcrng == true) {string imin; string imax; cout << "Input Minimum Number:\n"; cin >> imin; cout << "Input Maximum Number:\n"; cin >> imax; int min = stoi(imin); int max = stoi(imax); int output = calc_rng_int(min, max, 0); cout << "Answer: " << output <<endl;}
+
+    }
+
     Sleep(4000);
 }

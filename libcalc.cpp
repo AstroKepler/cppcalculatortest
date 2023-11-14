@@ -2,6 +2,8 @@
 #include <math.h>
 #include <cmath>
 #include <float.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -95,3 +97,13 @@ double applyOperator(double left, double right, char op) {
             exit(EXIT_FAILURE);
     }
 }
+int calc_rng_int(int a, int b, int c) {
+    srand(static_cast<unsigned int>(time(0)));
+    return c = (a + rand() % (b - a + 1));
+}
+float calc_rng_float (float a, float b, float c) {
+    srand(static_cast<unsigned int>(time(0)));
+    float random = static_cast<float>(rand())/static_cast<float>(RAND_MAX);
+    return c = (a+random*(b-a));
+}
+
